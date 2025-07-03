@@ -7,17 +7,21 @@ class CustomTextField extends StatelessWidget {
     super.key,
     this.hintText,
     this.suffixIcon,
-    this.width, this.isPassword,
+    this.width, this.isPassword, this.controller, this.validator,
   });
   final String? hintText;
   final double? width;
   final Widget? suffixIcon;
   final bool? isPassword;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? 331.w,
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
+        validator: validator,
         obscureText: isPassword ?? false,
         autofocus: false,
         cursorColor: AppColors.primaryColor,
@@ -39,6 +43,14 @@ class CustomTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.r),
             borderSide: BorderSide(color: AppColors.primaryColor, width: 1.w),
+          ),
+          errorBorder:  OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide(color: Colors.red, width: 1.w),
+          ),
+          focusedErrorBorder:OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide(color: Colors.red, width: 1.w),
           ),
           filled: true,
           fillColor: Color(0xFFE8ECF4),

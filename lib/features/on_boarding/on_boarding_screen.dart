@@ -24,7 +24,8 @@ class OnBoardingScreen extends StatelessWidget {
           SizedBox(height: 21.h),
           CustomButton(
             onPressed: () {
-              GoRouter.of(context).pushNamed(AppRoutes.loginScreen);
+              context.go(AppRoutes.loginScreen);
+              
             },
             text: 'Login',
             width: 331.w,

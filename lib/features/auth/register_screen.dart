@@ -1,4 +1,3 @@
-import 'package:finance_ui/core/routing/app_routes.dart';
 import 'package:finance_ui/core/utils/app_colors.dart';
 import 'package:finance_ui/core/utils/app_styles.dart';
 import 'package:finance_ui/core/widgets/custom_button.dart';
@@ -10,21 +9,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final fromKey = GlobalKey<FormState>();
   late TextEditingController emailController;
   late TextEditingController passwordContrroller;
+  late TextEditingController userName;
+  late TextEditingController configPassword;
   @override
   void initState() {
     emailController = TextEditingController();
     passwordContrroller = TextEditingController();
+    userName = TextEditingController();
+    configPassword = TextEditingController();
     super.initState();
   }
 
@@ -45,9 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 28.h),
 
                   SizedBox(
-                    width: 280.w,
+                    width: 331.w,
                     child: Text(
-                      'Welcome back! Again!',
+                      'Hello! Register to get started',
                       style: AppStyles.primaryHeadLinesStyle,
                     ),
                   ),
@@ -55,14 +58,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomTextField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter Your Email';
+                        return 'Enter Your Username';
+                      }
+                      return null;
+                    },
+                    controller: userName,
+                    hintText: 'Username',
+                  ),
+                  SizedBox(height: 12.h),
+                  CustomTextField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter Your Emaill';
                       }
                       return null;
                     },
                     controller: emailController,
-                    hintText: 'Enter Your Email',
+                    hintText: 'Email',
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 12.h),
                   CustomTextField(
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -75,53 +89,52 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     controller: passwordContrroller,
                     hintText: 'Enter Your Password',
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                      color: AppColors.greyColor,
-                      size: 20.sp,
-                    ),
+
                   ),
-                  SizedBox(height: 15.h),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                      context.go(AppRoutes.forgetPassword);
-                      },
-                      child: Text(
-                        'Forgot Password?',
-                        style: AppStyles.black15boldStyle.copyWith(
-                          color: Color(0xFF6A707C),
-                        ),
-                      ),
-                    ),
+                  SizedBox(height: 12.h),
+                  CustomTextField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter Your Password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      }
+                      return null;
+                    },
+                    controller: configPassword,
+                    hintText: 'Confirm password',
+
                   ),
+                
                   SizedBox(height: 30.h),
                   CustomButton(
                     onPressed: () {
                       if (fromKey.currentState!.validate()) {}
                     },
-                    text: 'Login',
+                    text: 'Register',
                   ),
                   SizedBox(height: 35.h),
-                  CustomOrLogin(),
-                  SizedBox(height: 30.h),
+                  CustomOrLogin(
+                    text: 'Or Register with',
+                  ),
+                  SizedBox(height: 22.h),
                   SocialLoginButton(),
-                  SizedBox(height: 155.h),
+                  SizedBox(height: 54.h),
                   Center(
                     child: ElevatedButton(
-                      onPressed: () {
-                        context.go(AppRoutes.registerScreen);
+                      onPressed: (){
+                        context.pop();
                       },
                       child: RichText(
                         text: TextSpan(
-                          text: 'Don’t have an account?',
+                          text: 'Already have an account?',
                           style: AppStyles.black15boldStyle.copyWith(
                             color: AppColors.primaryColor,
                           ),
                           children: [
                             TextSpan(
-                              text: 'Register Now',
+                              text: 'Login Now',
                               style: AppStyles.black15boldStyle,
                             ),
                           ],
