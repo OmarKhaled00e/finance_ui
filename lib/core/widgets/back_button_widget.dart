@@ -4,9 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class BackButtonWidget extends StatelessWidget {
-  const BackButtonWidget({
-    super.key,
-  });
+  const BackButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +21,13 @@ class BackButtonWidget extends StatelessWidget {
         child: Center(
           child: InkWell(
             onTap: () {
-              GoRouter.of(context).pop();
+              try {
+                context.pop();
+              } catch (e) {
+                Navigator.of(context).maybePop();
+              }
             },
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.primaryColor,
-            ),
+            child: Icon(Icons.arrow_back_ios, color: AppColors.primaryColor),
           ),
         ),
       ),

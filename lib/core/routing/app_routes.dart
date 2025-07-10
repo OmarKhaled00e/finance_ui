@@ -1,6 +1,7 @@
 class AppRoutes {
   static const String onBoardingScreen = '/onboarding';
   static const String loginScreen = '/login';
+  static const String verifyOtpScreen = '/verifyOtpScreen';
   static const String registerScreen = '/register';
   static const String forgetPassword = '/forget-password';
   static const String newPassword = '/new-password';

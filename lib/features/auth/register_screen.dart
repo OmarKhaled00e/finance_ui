@@ -1,8 +1,9 @@
+import 'package:finance_ui/core/routing/app_routes.dart';
 import 'package:finance_ui/core/utils/app_colors.dart';
 import 'package:finance_ui/core/utils/app_styles.dart';
 import 'package:finance_ui/core/widgets/custom_button.dart';
 import 'package:finance_ui/core/widgets/custom_text_field.dart';
-import 'package:finance_ui/features/auth/widgets/back_button_widget.dart';
+import 'package:finance_ui/core/widgets/back_button_widget.dart';
 import 'package:finance_ui/features/auth/widgets/custom_or_login.dart';
 import 'package:finance_ui/features/auth/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     controller: passwordContrroller,
                     hintText: 'Enter Your Password',
-
                   ),
                   SizedBox(height: 12.h),
                   CustomTextField(
@@ -104,9 +104,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     controller: configPassword,
                     hintText: 'Confirm password',
-
                   ),
-                
+
                   SizedBox(height: 30.h),
                   CustomButton(
                     onPressed: () {
@@ -115,16 +114,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     text: 'Register',
                   ),
                   SizedBox(height: 35.h),
-                  CustomOrLogin(
-                    text: 'Or Register with',
-                  ),
+                  CustomOrLogin(text: 'Or Register with'),
                   SizedBox(height: 22.h),
                   SocialLoginButton(),
                   SizedBox(height: 54.h),
                   Center(
-                    child: ElevatedButton(
-                      onPressed: (){
-                        context.pop();
+                    child: TextButton(
+                      onPressed: () {
+                        context.go(AppRoutes.loginScreen);
                       },
                       child: RichText(
                         text: TextSpan(
@@ -141,7 +138,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
+
                   ),
+                  SizedBox(height: 26.h,),
                 ],
               ),
             ),

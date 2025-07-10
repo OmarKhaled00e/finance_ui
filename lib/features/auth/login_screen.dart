@@ -3,7 +3,7 @@ import 'package:finance_ui/core/utils/app_colors.dart';
 import 'package:finance_ui/core/utils/app_styles.dart';
 import 'package:finance_ui/core/widgets/custom_button.dart';
 import 'package:finance_ui/core/widgets/custom_text_field.dart';
-import 'package:finance_ui/features/auth/widgets/back_button_widget.dart';
+import 'package:finance_ui/core/widgets/back_button_widget.dart';
 import 'package:finance_ui/features/auth/widgets/custom_or_login.dart';
 import 'package:finance_ui/features/auth/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
@@ -84,9 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 15.h),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: ElevatedButton(
+                    child: TextButton(
                       onPressed: () {
-                      context.go(AppRoutes.forgetPassword);
+                        context.go(AppRoutes.forgetPassword);
                       },
                       child: Text(
                         'Forgot Password?',
@@ -99,7 +99,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 30.h),
                   CustomButton(
                     onPressed: () {
-                      if (fromKey.currentState!.validate()) {}
+                      if (fromKey.currentState!.validate()) {
+                        context.go(AppRoutes.verifyOtpScreen);
+                      }
                     },
                     text: 'Login',
                   ),
@@ -109,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SocialLoginButton(),
                   SizedBox(height: 155.h),
                   Center(
-                    child: ElevatedButton(
+                    child: TextButton(
                       onPressed: () {
                         context.go(AppRoutes.registerScreen);
                       },
@@ -129,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 45.h),
                 ],
               ),
             ),

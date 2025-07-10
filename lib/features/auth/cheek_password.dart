@@ -1,3 +1,4 @@
+import 'package:finance_ui/core/routing/app_routes.dart';
 import 'package:finance_ui/core/utils/app_styles.dart';
 import 'package:finance_ui/core/utils/assets.dart';
 import 'package:finance_ui/core/widgets/custom_button.dart';
@@ -43,7 +44,7 @@ class CheekPassword extends StatelessWidget {
             SizedBox(height: 40.h),
             CustomButton(
               onPressed: () {
-                context.pop();
+                context.go(AppRoutes.loginScreen);
               },
               text: 'Back to Login',
             ),

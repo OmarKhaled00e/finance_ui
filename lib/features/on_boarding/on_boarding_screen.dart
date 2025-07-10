@@ -25,7 +25,6 @@ class OnBoardingScreen extends StatelessWidget {
           CustomButton(
             onPressed: () {
               context.go(AppRoutes.loginScreen);
-              
             },
             text: 'Login',
             width: 331.w,
@@ -33,7 +32,9 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           PrimaryOutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go(AppRoutes.registerScreen);
+            },
             width: 331.w,
             height: 56.h,
             text: 'Register',
